@@ -16,8 +16,15 @@
     header {
       display: flex;
       align-items: center;
-      padding: 20px;
+      padding: 15px 20px;
       background: rgba(0, 0, 0, 0.6);
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
     }
 
     header img {
@@ -26,10 +33,20 @@
       border-radius: 8px;
     }
 
-    header h1 {
+    .title-info h1 {
       margin: 0;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: bold;
+    }
+
+    .social {
+      text-align: right;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .social span {
+      display: block;
     }
 
     main {
@@ -101,8 +118,16 @@
 <body>
 
   <header>
-    <img src="https://files.catbox.moe/8dfkw8.jpeg" alt="Logo Dodz">
-    <h1>Dodz</h1>
+    <div class="logo-section">
+      <img src="https://files.catbox.moe/8dfkw8.jpeg" alt="Logo Dodz">
+      <div class="title-info">
+        <h1>Dodz</h1>
+      </div>
+    </div>
+    <div class="social">
+      <span>🔴 YouTube: <strong>@dodzpedia</strong></span>
+      <span>💬 Telegram: <strong>@VatzXML</strong></span>
+    </div>
   </header>
 
   <main>
@@ -117,8 +142,8 @@
     </div>
 
     <div class="card">
-      <h2>🪄 Bug Delay Invisible</h2>
-      <p>Bug Delay 🪄 terbaru, invisible & support semua device. Cocok untuk eksperimen WA.</p>
+      <h2>✨ Bug Delay Invisible</h2>
+      <p>Bug Delay 🛠️ terbaru, invisible & support semua device. Cocok untuk eksperimen WA.</p>
       <div class="price">💰 Rp5.000</div>
       <a class="btn" href="https://wa.me/6285606661683">Order via WhatsApp</a>
     </div>
