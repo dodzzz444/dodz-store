@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dodz Profile</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
@@ -28,7 +28,7 @@
       flex-direction: column;
     }
 
-    /* START SCREEN */
+    /* Start Screen */
     #start-screen {
       position: fixed;
       top: 0;
@@ -62,6 +62,71 @@
       transform: scale(1.1);
     }
 
+    /* Glitch Animation */
+    .glitch {
+      position: relative;
+      color: #00fff0;
+      animation: glitchAnim 1s infinite;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0.8;
+      color: #ff00c8;
+      clip: rect(0, 900px, 0, 0);
+    }
+
+    .glitch::after {
+      color: #00f0ff;
+    }
+
+    @keyframes glitchAnim {
+      0% {
+        text-shadow: 2px 0 red, -2px 0 blue;
+        transform: translate(0);
+      }
+      20% {
+        text-shadow: -2px 0 red, 2px 0 blue;
+        transform: translate(-1px, 1px);
+      }
+      40% {
+        text-shadow: 2px 0 red, -2px 0 blue;
+        transform: translate(1px, -1px);
+      }
+      60% {
+        text-shadow: -2px 0 red, 2px 0 blue;
+        transform: translate(-2px, 2px);
+      }
+      80% {
+        text-shadow: 2px 0 red, -2px 0 blue;
+        transform: translate(2px, -1px);
+      }
+      100% {
+        text-shadow: none;
+        transform: translate(0);
+      }
+    }
+
+    /* Zoom-in */
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .zoom-in {
+      animation: zoomIn 0.6s ease-out;
+    }
+
     #main-content {
       display: none;
       flex-direction: column;
@@ -88,7 +153,6 @@
 
     .name {
       font-size: 16px;
-      color: #00fff0;
       margin-bottom: 10px;
     }
 
@@ -153,22 +217,40 @@
     .btn-order:hover {
       background: #3a3a3a;
     }
+
+    /* Music Player */
+    #music-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.6);
+      padding: 12px;
+      border-radius: 16px;
+      box-shadow: 0 0 10px #00fff0;
+      font-family: 'Press Start 2P', monospace;
+      z-index: 9999;
+    }
+
+    #music-player audio {
+      width: 250px;
+      filter: contrast(130%);
+    }
   </style>
 </head>
 <body>
 
   <!-- START SCREEN -->
   <div id="start-screen">
-    <img src="https://i.imgur.com/CNz2WzN.png" alt="logo" class="logo"> <!-- Ganti logo jika perlu -->
-    <div class="start-text" onclick="startSite()">[ Start ]</div>
+    <img src="https://i.imgur.com/CNz2WzN.png" alt="logo" class="logo">
+    <div class="start-text" id="start-btn" onclick="startSite()">[ Start ]</div>
   </div>
 
   <!-- MAIN CONTENT -->
   <div id="main-content">
     <div class="card">
       <img src="https://files.catbox.moe/8dfkw8.jpeg" alt="avatar" class="avatar">
-      <div class="name">@dodzpedia</div>
-      <div class="subtitle">website resmi ⚙️</div>
+      <div class="name glitch" data-text="@dodzpedia">@dodzpedia</div>
+      <div class="subtitle">custom builder ⚙️</div>
       <div class="subtitle">Dodz - Store</div>
 
       <div class="social-link">
@@ -194,13 +276,33 @@
     </div>
   </div>
 
+  <!-- MUSIC PLAYER -->
+  <div id="music-player">
+    <audio id="bg-music" controls loop>
+      <source src="https://files.catbox.moe/t7cse5.mp4" type="audio/mp4">
+      Browser kamu tidak mendukung audio.
+    </audio>
+  </div>
+
   <script>
     function startSite() {
-      document.getElementById('start-screen').style.display = 'none';
-      document.getElementById('main-content').style.display = 'flex';
-      document.body.style.overflow = 'auto';
+      const btn = document.getElementById('start-btn');
+      btn.classList.add('glitch');
+
+      setTimeout(() => {
+        document.getElementById('start-screen').style.display = 'none';
+        const main = document.getElementById('main-content');
+        main.style.display = 'flex';
+        main.classList.add('zoom-in');
+        document.body.style.overflow = 'auto';
+
+        // Autoplay music (note: may be blocked oleh browser, tergantung device)
+        const music = document.getElementById('bg-music');
+        music.play().catch(() => {
+          // Biarkan user klik manual jika autoplay diblok
+        });
+      }, 300);
     }
   </script>
-
 </body>
 </html>
