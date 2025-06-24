@@ -4,484 +4,125 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dodz - Store</title>
-
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
   <style>
-    * { box-sizing: border-box; }
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      background: url('https://raw.githubusercontent.com/dodzzz444/dodz-store/main/bg.jpg') no-repeat center center fixed;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://files.catbox.moe/bxk5ir.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #f5f5f5;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
-      z-index: -1;
-    }
-
-    /* Splash Screen */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: #000;
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      animation: fadeOut 1s ease forwards;
-      animation-delay: 2s;
-    }
-
-    #splash img {
-      width: 100px;
-      margin-bottom: 15px;
-      border-radius: 15px;
-    }
-
-    #splash h1 {
-      font-family: 'Fredoka One', cursive;
-      font-size: 32px;
-      color: #ff0040;
-    }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
     }
 
     header {
-      text-align: center;
-      padding: 50px 20px 30px;
-      background: transparent;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 2s;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    header img {
+      height: 50px;
+      margin-right: 10px;
+      border-radius: 8px;
     }
 
     header h1 {
-      font-family: 'Fredoka One', cursive;
-      font-size: 40px;
       margin: 0;
-      color: #ff0040;
-    }
-
-    header .logo-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .logo-title img {
-      height: 60px;
-      border-radius: 10px;
-    }
-
-    .typed-text {
-      font-size: 16px;
-      color: #ccc;
-      margin-top: 8px;
-      height: 20px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 30px 20px;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 2.5s;
-    }
-
-    .product {
-      background: rgba(30,30,30,0.9);
-      border: 1px solid #ff0040;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 10px rgba(255, 0, 64, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px rgba(255, 0, 64, 0.5);
-    }
-
-    .product h3 {
-      margin: 0;
-      font-size: 20px;
-      color: #fff;
-    }
-
-    .product p {
-      color: #bbb;
-      font-size: 15px;
-    }
-
-    .price {
-      color: #ff0040;
+      font-size: 24px;
       font-weight: bold;
+    }
+
+    main {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .title {
+      font-size: 32px;
+      color: white;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      font-weight: bold;
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: fit-content;
+      margin: 0 auto 30px auto;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid #ffffff;
+      box-shadow: 0 0 12px #ffffff50;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-top: 0;
+    }
+
+    .card p {
+      font-size: 14px;
       margin: 10px 0;
     }
 
-    .product button {
-      background: #25D366;
+    .price {
+      color: #ff0044;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      background-color: #25D366;
       color: white;
-      border: none;
       padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 15px;
-      transition: 0.3s ease;
-      box-shadow: 0 0 10px #25D366;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
-    .product button:hover {
-      background: #1da955;
-      box-shadow: 0 0 20px #1da955;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #ccc;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 3s;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+    .btn:hover {
+      background-color: #1ebe5c;
     }
   </style>
 </head>
 <body>
 
-  <!-- Splash Screen -->
-  <div id="splash">
-    <img src="https://raw.githubusercontent.com/dodzzz444/dodz-store/main/logo.png" alt="Logo Dodz">
-    <h1>Dodz - Store</h1>
-  </div>
-
   <header>
-    <div class="logo-title">
-      <img src="https://raw.githubusercontent.com/dodzzz444/dodz-store/main/logo.png" alt="Logo Dodz">
-      <h1>Dodz - Store</h1>
-    </div>
-    <div class="typed-text">
-      <span id="typed"></span>
-    </div>
+    <img src="https://files.catbox.moe/8dfkw8.jpeg" alt="Logo Dodz">
+    <h1>Dodz</h1>
   </header>
 
-  <div class="container">
-    <div class="product">
-      <h3>📱 Alight Motion Original</h3>
+  <main>
+    <div class="title">Dodz - Store</div>
+    <div class="subtitle">Custom Build 🔥|</div>
+
+    <div class="card">
+      <h2>📱 Alight Motion Original</h2>
       <p>AM langsung dari PlayStore, bukan mod. Akun disediakan oleh pembeli untuk login.</p>
       <div class="price">💰 Rp4.000</div>
-      <button onclick="window.location.href='https://wa.me/6285606661683?text=Halo%20bang,%20mau%20order%20Alight%20Motion'">
-        Order via WhatsApp
-      </button>
+      <a class="btn" href="https://wa.me/6285606661683">Order via WhatsApp</a>
     </div>
 
-    <div class="product">
-      <h3>🧨 Bug Delay Invisible</h3>
-      <p>Bug Delay 𖥂 terbaru, invisible & support semua device. Cocok untuk eksperimen WA.</p>
+    <div class="card">
+      <h2>🪄 Bug Delay Invisible</h2>
+      <p>Bug Delay 🪄 terbaru, invisible & support semua device. Cocok untuk eksperimen WA.</p>
       <div class="price">💰 Rp5.000</div>
-      <button onclick="window.location.href='https://wa.me/6285606661683?text=Bang%20mau%20order%20bug%20delay%20invisible'">
-        Order via WhatsApp
-      </button>
+      <a class="btn" href="https://wa.me/6285606661683">Order via WhatsApp</a>
     </div>
 
-    <div class="product">
-      <h3>⚙️ Panel WhatsApp Auto</h3>
-      <p>Panel auto setup, uptime tinggi, anti mokad, cocok untuk reseller & user aktif.</p>
-      <div class="price">💰 Rp10.000</div>
-      <button onclick="window.location.href='https://wa.me/6285606661683?text=Bang%20mau%20order%20panel%20WA'">
-        Order via WhatsApp
-      </button>
-    </div>
-  </div>
-
-  <footer>
-    &copy; 2025 Dodz - Store. All rights reserved.
-  </footer>
-
-  <!-- Audio Backsound -->
-  <audio id="bgm" src="https://media.vocaroo.com/mp3/1eVGKXIj7ePp" loop></audio>
-  <script>
-    new Typed('#typed', {
-      strings: ['Jual Script Bot WA', 'Bug Delay Bold', 'Panel Premium Auto', 'Bypass Anti Ban', 'Custom Build 🔥'],
-      typeSpeed: 40,
-      backSpeed: 30,
-      loop: true
-    });
-
-    const audio = document.getElementById("bgm");
-    document.body.addEventListener("click", () => {
-      audio.play().catch(() => {});
-    }, { once: true });
-  </script>
-
-</body>
-      </html> <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dodz - Store</title>
-
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      background: url('https://raw.githubusercontent.com/dodzzz444/dodz-store/main/bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #f5f5f5;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
-      z-index: -1;
-    }
-
-    /* Splash Screen */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      animation: fadeOut 1s ease forwards;
-      animation-delay: 2s;
-    }
-
-    #splash img {
-      width: 100px;
-      margin-bottom: 15px;
-      border-radius: 15px;
-    }
-
-    #splash h1 {
-      font-family: 'Fredoka One', cursive;
-      font-size: 32px;
-      color: #ff0040;
-    }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    header {
-      text-align: center;
-      padding: 50px 20px 30px;
-      background: transparent;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 2s;
-    }
-
-    header h1 {
-      font-family: 'Fredoka One', cursive;
-      font-size: 40px;
-      margin: 0;
-      color: #ff0040;
-    }
-
-    header .logo-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .logo-title img {
-      height: 60px;
-      border-radius: 10px;
-    }
-
-    .typed-text {
-      font-size: 16px;
-      color: #ccc;
-      margin-top: 8px;
-      height: 20px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 30px 20px;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 2.5s;
-    }
-
-    .product {
-      background: rgba(30,30,30,0.9);
-      border: 1px solid #ff0040;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 10px rgba(255, 0, 64, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px rgba(255, 0, 64, 0.5);
-    }
-
-    .product h3 {
-      margin: 0;
-      font-size: 20px;
-      color: #fff;
-    }
-
-    .product p {
-      color: #bbb;
-      font-size: 15px;
-    }
-
-    .price {
-      color: #ff0040;
-      font-weight: bold;
-      margin: 10px 0;
-    }
-
-    .product button {
-      background: #25D366;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 15px;
-      transition: 0.3s ease;
-      box-shadow: 0 0 10px #25D366;
-    }
-
-    .product button:hover {
-      background: #1da955;
-      box-shadow: 0 0 20px #1da955;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #ccc;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 3s;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Splash Screen -->
-  <div id="splash">
-    <img src="https://raw.githubusercontent.com/dodzzz444/dodz-store/main/logo.png" alt="Logo Dodz">
-    <h1>Dodz - Store</h1>
-  </div>
-
-  <header>
-    <div class="logo-title">
-      <img src="https://raw.githubusercontent.com/dodzzz444/dodz-store/main/logo.png" alt="Logo Dodz">
-      <h1>Dodz - Store</h1>
-    </div>
-    <div class="typed-text">
-      <span id="typed"></span>
-    </div>
-  </header>
-
-  <div class="container">
-    <div class="product">
-      <h3>📱 Alight Motion Original</h3>
-      <p>AM langsung dari PlayStore, bukan mod. Akun disediakan oleh pembeli untuk login.</p>
-      <div class="price">💰 Rp4.000</div>
-      <button onclick="window.location.href='https://wa.me/6285606661683?text=Halo%20bang,%20mau%20order%20Alight%20Motion'">
-        Order via WhatsApp
-      </button>
-    </div>
-
-    <div class="product">
-      <h3>🧨 Bug Delay Invisible</h3>
-      <p>Bug Delay 𖥂 terbaru, invisible & support semua device. Cocok untuk eksperimen WA.</p>
-      <div class="price">💰 Rp5.000</div>
-      <button onclick="window.location.href='https://wa.me/6285606661683?text=Bang%20mau%20order%20bug%20delay%20invisible'">
-        Order via WhatsApp
-      </button>
-    </div>
-
-    <div class="product">
-      <h3>⚙️ Panel WhatsApp Auto</h3>
-      <p>Panel auto setup, uptime tinggi, anti mokad, cocok untuk reseller & user aktif.</p>
-      <div class="price">💰 Rp10.000</div>
-      <button onclick="window.location.href='https://wa.me/6285606661683?text=Bang%20mau%20order%20panel%20WA'">
-        Order via WhatsApp
-      </button>
-    </div>
-  </div>
-
-  <footer>
-    &copy; 2025 Dodz - Store. All rights reserved.
-  </footer>
-
-  <!-- Audio Backsound -->
-  <audio id="bgm" src="https://media.vocaroo.com/mp3/1eVGKXIj7ePp" loop></audio>
-  <script>
-    new Typed('#typed', {
-      strings: ['Jual Script Bot WA', 'Bug Delay Bold', 'Panel Premium Auto', 'Bypass Anti Ban', 'Custom Build 🔥'],
-      typeSpeed: 40,
-      backSpeed: 30,
-      loop: true
-    });
-
-    const audio = document.getElementById("bgm");
-    document.body.addEventListener("click", () => {
-      audio.play().catch(() => {});
-    }, { once: true });
-  </script>
-
+  </main>
 </body>
 </html>
