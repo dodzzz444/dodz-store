@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dodz Profile</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
       font-family: 'Press Start 2P', monospace;
@@ -25,6 +23,82 @@
       padding: 20px;
     }
 
+    /* INTRO SCREEN */
+    #intro {
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: black;
+      color: #00fff0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: transform 1s ease, opacity 0.5s;
+    }
+
+    #intro.hide {
+      transform: scale(0);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #typing {
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00fff0;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 1s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    #typing.glitch {
+      animation: glitch 1s infinite;
+      color: red;
+    }
+
+    @keyframes glitch {
+      0% { transform: skew(0.5deg); }
+      10% { transform: translate(2px, -2px) skew(0.5deg); }
+      20% { transform: translate(-2px, 2px); }
+      30% { transform: translate(2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      50% { transform: translate(2px, 0); }
+      60% { transform: translate(0, 2px); }
+      70% { transform: translate(-2px, 0); }
+      80% { transform: translate(0, -2px); }
+      90% { transform: translate(2px, 2px); }
+      100% { transform: none; }
+    }
+
+    #start-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #00fff0;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    /* Main Content */
+    #main {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
     .card {
       background: rgba(0, 0, 0, 0.6);
       border-radius: 16px;
@@ -33,6 +107,7 @@
       width: 100%;
       text-align: center;
       box-shadow: 0 0 15px #00fff0;
+      margin-top: 20px;
     }
 
     .avatar {
@@ -125,49 +200,73 @@
       width: 100%;
       border-radius: 10px;
     }
-
   </style>
 </head>
 <body>
-  <div class="card">
-    <img src="https://files.catbox.moe/8dfkw8.jpeg" alt="avatar" class="avatar">
-    <div class="name">@dodzpedia</div>
-    <div class="subtitle">custom builder ⚙️</div>
-    <div class="subtitle">Dodz - Store</div>
+  <!-- INTRO SCREEN -->
+  <div id="intro">
+    <div id="typing">Selamat Datang di Toko Dodz Hosting</div>
+    <button id="start-btn">[ Start ]</button>
+  </div>
 
-    <div class="social-link">
-      <span>🔗 YouTube</span>
-      <a href="https://youtube.com/@dodzpedia" target="_blank">@dodzpedia</a>
+  <!-- MAIN CONTENT -->
+  <div id="main">
+    <div class="card">
+      <img src="https://files.catbox.moe/8dfkw8.jpeg" alt="avatar" class="avatar">
+      <div class="name">@dodzpedia</div>
+      <div class="subtitle">custom builder ⚙️</div>
+      <div class="subtitle">Dodz - Store</div>
+
+      <div class="social-link">
+        <span>🔗 YouTube</span>
+        <a href="https://youtube.com/@dodzpedia" target="_blank">@dodzpedia</a>
+      </div>
+
+      <div class="social-link">
+        <span>💬 Telegram</span>
+        <a href="https://t.me/VatzXML" target="_blank">@VatzXML</a>
+      </div>
+
+      <div class="social-link">
+        <span>📢 WhatsApp</span>
+        <a href="https://whatsapp.com/channel/0029VbBEbydLI8Ydpi0H431q" target="_blank">Join Channel</a>
+      </div>
     </div>
 
-    <div class="social-link">
-      <span>💬 Telegram</span>
-      <a href="https://t.me/VatzXML" target="_blank">@VatzXML</a>
+    <div class="product">
+      <h3>🎞️ Alight Motion Premium</h3>
+      <div class="price">💰 Rp4.000</div>
+      <a class="btn-order" href="https://wa.me/6285606661683">Order Now</a>
+      <a class="btn-pay" href="payment.html">[ Pay ]</a>
     </div>
 
-    <div class="social-link">
-      <span>📢 WhatsApp</span>
-      <a href="https://whatsapp.com/channel/0029VbBEbydLI8Ydpi0H431q" target="_blank">Join Channel</a>
+    <div class="product">
+      <div class="product-img-box">
+        <img src="https://files.catbox.moe/slmaqj.jpg" alt="Script WhatsApp Bot">
+      </div>
+      <h3>📜 Script WhatsApp Bot</h3>
+      <div class="price">💰 Rp10.000</div>
+      <a class="btn-order" href="https://wa.me/6285606661683">Order Now</a>
+      <a class="btn-pay" href="payment.html">[ Pay ]</a>
     </div>
   </div>
 
-  <!-- Produk Alight Motion -->
-  <div class="product">
-    <h3>🎞️ Alight Motion Premium</h3>
-    <div class="price">💰 Rp4.000</div>
-    <a class="btn-order" href="https://wa.me/6285606661683">Order Now</a>
-    <a class="btn-pay" href="payment.html">[ Pay ]</a>
-  </div>
+  <script>
+    const startBtn = document.getElementById('start-btn');
+    const intro = document.getElementById('intro');
+    const main = document.getElementById('main');
+    const typing = document.getElementById('typing');
 
-  <!-- Produk Script WhatsApp Bot -->
-  <div class="product">
-    <div class="product-img-box">
-      <img src="https://files.catbox.moe/slmaqj.jpg" alt="Script WhatsApp Bot">
-    </div>
-    <h3>📜 Script WhatsApp Bot</h3>
-    <div class="price">💰 Rp10.000</div>
-    <a class="btn-order" href="https://wa.me/6285606661683">Order Now</a>
-    <a class="btn-pay" href="payment.html">[ Pay ]</a>
-  </div>
+    startBtn.addEventListener('click', () => {
+      typing.classList.add('glitch'); // Aktifkan glitch
+      setTimeout(() => {
+        intro.classList.add('hide');
+        setTimeout(() => {
+          intro.style.display = 'none';
+          main.style.display = 'flex';
+        }, 1000);
+      }, 1000); // Tunda zoom agar glitch terlihat
+    });
+  </script>
 </body>
 </html>
