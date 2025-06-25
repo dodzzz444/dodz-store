@@ -1,278 +1,141 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dodz Profile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dodz Store - Produk & Pembayaran</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
       font-family: 'Press Start 2P', monospace;
-      background: url('https://files.catbox.moe/bxk5ir.jpg') no-repeat center center fixed;
-      background-size: cover;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
       color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
       min-height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      flex-direction: column;
-    }
-
-    /* START SCREEN */
-    #start-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      flex-direction: column;
-    }
-
-    #start-screen .logo {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 40px;
-    }
-
-    #start-screen .start-text {
-      font-size: 12px;
-      color: white;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    #start-screen .start-text:hover {
-      transform: scale(1.1);
-    }
-
-    /* GLITCH ANIMATION (for @dodzpedia) */
-    .glitch {
-      position: relative;
-      color: #00fff0;
-      animation: glitchAnim 1s infinite;
-    }
-
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0.8;
-      color: #ff00c8;
-      clip: rect(0, 900px, 0, 0);
-    }
-
-    .glitch::after {
-      color: #00f0ff;
-    }
-
-    @keyframes glitchAnim {
-      0% {
-        text-shadow: 2px 0 red, -2px 0 blue;
-        transform: translate(0);
-      }
-      20% {
-        text-shadow: -2px 0 red, 2px 0 blue;
-        transform: translate(-1px, 1px);
-      }
-      40% {
-        text-shadow: 2px 0 red, -2px 0 blue;
-        transform: translate(1px, -1px);
-      }
-      60% {
-        text-shadow: -2px 0 red, 2px 0 blue;
-        transform: translate(-2px, 2px);
-      }
-      80% {
-        text-shadow: 2px 0 red, -2px 0 blue;
-        transform: translate(2px, -1px);
-      }
-      100% {
-        text-shadow: none;
-        transform: translate(0);
-      }
-    }
-
-    /* ZOOM IN EFFECT */
-    @keyframes zoomIn {
-      from {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    .zoom-in {
-      animation: zoomIn 0.6s ease-out;
-    }
-
-    #main-content {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      animation: none;
-    }
-
-    .card {
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 16px;
       padding: 30px 20px;
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 0 15px #00fff0;
-    }
+    }h1 {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #00fff0;
+  text-align: center;
+}
 
-    .avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      border: 3px solid #fff;
-    }
+.section {
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 400px;
+}
 
-    .name {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
+.product-card {
+  background: #111;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 0 10px #00fff0;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-    .subtitle {
-      font-size: 10px;
-      color: #fff;
-      margin-bottom: 25px;
-    }
+.product-card h2 {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
 
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 9px;
-    }
+.product-card p {
+  font-size: 10px;
+  color: #ff0044;
+  margin-bottom: 15px;
+}
 
-    .social-link a {
-      color: #00fff0;
-      text-decoration: none;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.btn-order {
+  background: #2c2c2c;
+  color: #00aaff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 10px;
+  transition: 0.3s;
+  display: inline-block;
+}
 
-    .product {
-      margin-top: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 14px;
-      padding: 20px;
-      box-shadow: 0 0 10px #00fff0;
-      text-align: center;
-      max-width: 400px;
-    }
+.btn-order:hover {
+  background: #3a3a3a;
+}
 
-    .product h3 {
-      font-size: 12px;
-      margin-bottom: 10px;
-      color: #fff;
-    }
+.payment-card {
+  background: #111;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 0 10px #00fff0;
+  margin-bottom: 20px;
+}
 
-    .product .price {
-      color: #ff0044;
-      font-size: 11px;
-      margin-bottom: 15px;
-    }
+.payment-card h2 {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
 
-    .btn-order {
-      background: #2c2c2c;
-      color: #00aaff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      display: inline-block;
-      font-weight: bold;
-      font-size: 10px;
-      transition: 0.3s;
-    }
+.payment-card p {
+  font-size: 10px;
+  word-break: break-all;
+}
 
-    .btn-order:hover {
-      background: #3a3a3a;
-    }
+.qris-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.note {
+  font-size: 9px;
+  color: #ccc;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.back-btn {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 10px;
+  background-color: #00fff0;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 5px #00fff0;
+}
+
   </style>
 </head>
-<body>
-
-  <!-- START SCREEN -->
-  <div id="start-screen">
-    <img src="https://i.imgur.com/CNz2WzN.png" alt="logo" class="logo">
-    <div class="start-text" id="start-btn" onclick="startSite()">[ Start ]</div>
-  </div>
-
-  <!-- MAIN CONTENT -->
-  <div id="main-content">
-    <div class="card">
-      <img src="https://files.catbox.moe/8dfkw8.jpeg" alt="avatar" class="avatar">
-      <div class="name glitch" data-text="@dodzpedia">@dodzpedia</div>
-      <div class="subtitle">custom builder ⚙️</div>
-      <div class="subtitle">Dodz - Store</div>
-
-      <div class="social-link">
-        <span>🔗 YouTube</span>
-        <a href="https://youtube.com/@dodzpedia" target="_blank">@dodzpedia</a>
-      </div>
-
-      <div class="social-link">
-        <span>💬 Telegram</span>
-        <a href="https://t.me/VatzXML" target="_blank">@VatzXML</a>
-      </div>
-
-      <div class="social-link">
-        <span>📢 WhatsApp</span>
-        <a href="https://whatsapp.com/channel/0029VbBEbydLI8Ydpi0H431q" target="_blank">Join Channel</a>
-      </div>
+<body>  <h1>🛍️ Dodz Store</h1>  <div class="section">
+    <div class="product-card">
+      <h2>🎞️ Alight Motion Premium</h2>
+      <p>💰 Rp4.000</p>
+      <a class="btn-order" href="https://wa.me/6285606661683">Order Sekarang</a>
     </div>
+  </div>  <h1>💸 Metode Pembayaran</h1>  <div class="section">
+    <div class="payment-card">
+      <h2>DANA</h2>
+      <p>6285606661683</p>
+    </div><div class="payment-card">
+  <h2>GO-PAY</h2>
+  <p>6285606661683</p>
+</div>
 
-    <div class="product">
-      <h3>🎞️ Alight Motion Premium</h3>
-      <div class="price">💰 Rp4.000</div>
-      <a class="btn-order" href="https://wa.me/6285606661683">Order Now</a>
-    </div>
-  </div>
+<div class="payment-card">
+  <h2>QRIS</h2>
+  <img src="https://img1.pixhost.to/images/6740/615117843_malzhost.jpg" alt="QRIS" class="qris-img" />
+</div>
 
-  <script>
-    function startSite() {
-      const btn = document.getElementById('start-btn');
-      btn.classList.add('glitch');
+<div class="note">
+  Setelah melakukan pembayaran, harap konfirmasi via WhatsApp ya!
+</div>
 
-      setTimeout(() => {
-        document.getElementById('start-screen').style.display = 'none';
-        const main = document.getElementById('main-content');
-        main.style.display = 'flex';
-        main.classList.add('zoom-in');
-        document.body.style.overflow = 'auto';
-      }, 300); // Delay untuk glitch terlihat
-    }
-  </script>
+  </div><a href="#" onclick="history.back()" class="back-btn">[ Back ]</a>
 
 </body>
 </html>
