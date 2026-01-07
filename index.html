@@ -1,179 +1,143 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parid Profile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Press Start 2P', monospace;
-      background: url('https://files.catbox.moe/fbcbeb.jpg') no-repeat center center fixed;
-      background-size: cover;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parid JB</title>
 
-    .card {
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 16px;
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  background: url('https://files.catbox.moe/fbcbeb.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 15px;
+  color: white;
+}
+
+/* ================= CARD PROFIL ================= */
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(0,0,0,0.65);
+  border-radius: 22px;
   padding: 30px 20px;
-  max-width: 400px;
-  width: 100%;
   text-align: center;
-
   border: 2px solid #ff0033;
-  box-shadow: 0 0 20px #ff0033;
-    }
-    
-    .avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      border: 3px solid #fff;
-    }
+  box-shadow: 0 0 30px #ff0033;
+  margin-bottom: 28px;
+}
 
-    .name {
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 20px;
+  border: 3px solid #ff0033;
+  margin-bottom: 18px;
+}
+
+.name {
   font-size: 16px;
-  color: #ff0044;
+  color: #ff0033;
+  text-shadow: 0 0 10px #ff0033;
   margin-bottom: 10px;
-  text-shadow: 0 0 8px #ff0044;
-    }
+}
 
-    .subtitle {
-      font-size: 10px;
-      color: #fff;
-      margin-bottom: 25px;
-    }
+.subtitle {
+  font-size: 10px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
 
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 9px;
-    }
-
-    .social-link a {
-      color: #b00fff;
-      text-decoration: none;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .product {
-      margin-top: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 14px;
-      padding: 20px;
-      box-shadow: 0 0 10px #00fff0;
-      text-align: center;
-      max-width: 400px;
-      width: 100%;
-    }
-
-    .product h3 {
-      font-size: 12px;
-      margin-bottom: 10px;
-      color: #fff;
-    }
-
-    .product .price {
-      color: #ff0044;
-      font-size: 11px;
-      margin-bottom: 15px;
-    }
-
-    .btn-order, .btn-pay {
-      background: #2c2c2c;
-      color: #00aaff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      display: inline-block;
-      font-weight: bold;
-      font-size: 10px;
-      transition: 0.3s;
-      margin: 5px;
-    }
-
-    .btn-order:hover, .btn-pay:hover {
-      background: #3a3a3a;
-    }
-
-    .product-img-box {
-      margin-bottom: 15px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 10px;
-      border-radius: 12px;
-      box-shadow: 0 0 8px #00fff0;
-    }
-
-    .product-img-box img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .wa-box {
+/* ================= WA BOX ================= */
+.wa-box {
   width: 100%;
   max-width: 400px;
-  margin: 15px auto;
+  margin-bottom: 18px;
 }
 
 .wa-box a {
   display: block;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0,0,0,0.65);
   color: #ffffff;
   text-align: center;
   padding: 18px 14px;
-  border-radius: 18px;
+  border-radius: 20px;
   text-decoration: none;
   font-size: 10px;
   line-height: 1.6;
 
   border: 2px solid #ff0033;
-  box-shadow: 0 0 14px #ff0033;
+  box-shadow: 0 0 18px #ff0033;
   transition: all 0.3s ease;
 }
 
 .wa-box a:hover {
-  background: rgba(40, 0, 0, 0.8);
-  box-shadow: 0 0 25px #ff0033;
+  background: rgba(40,0,0,0.8);
+  box-shadow: 0 0 30px #ff0033;
   transform: scale(1.04);
-      }
-    
-  </style>
+}
+</style>
 </head>
-<body>
-  <div class="card">
-    <img src="https://files.catbox.moe/4kuo1v.jpg" alt="avatar" class="avatar">
-    <div class="name">Parid JB</div>
-    <div class="subtitle">seller gamer 🛍️</div>
-    <div class="subtitle">Parid - Java</div>
 
-    <div class="wa-box">
-  <a href="https://whatsapp.com/channel/0029VbB1wI0EKyZP4pm0Ct36" target="_blank">
+<body>
+
+<!-- KOTAK BESAR PROFIL -->
+<div class="card">
+  <img src="https://files.catbox.moe/4kuo1v.jpg" class="avatar">
+  <div class="name">Parid JB</div>
+  <div class="subtitle">seller gamer 🛍️</div>
+  <div class="subtitle">Parid - Java</div>
+</div>
+
+<!-- KOTAK WHATSAPP (TERPISAH) -->
+<div class="wa-box">
+  <a href="https://whatsapp.com/channel/0029VbB1wI0EKyZP4pm0Ct36" target="_blank" rel="noopener">
     Testi dan stok parid
   </a>
 </div>
 
 <div class="wa-box">
-  <a href="https://chat.whatsapp.com/Hd7KfHSDPGN1VVsSUM57zw" target="_blank">
+  <a href="https://chat.whatsapp.com/Hd7KfHSDPGN1VVsSUM57zw" target="_blank" rel="noopener">
     JB¹ || ALL GAME REGION NGANJUK (JATIM)
   </a>
 </div>
+
+  <div class="wa-box">
+    <a href="https://chat.whatsapp.com/H1ZiD6B87UDCdB7qD1qBKL" target="_blank" rel="noopener">
+      JB¹ALL GAME REGION NGRONGGOT (JATIM)
+    </a>
+
+  <div class="wa-box">
+    <a href="https://chat.whatsapp.com/JUIv0vw6U93BLjxv6UkKDy" target="_blank" rel="noopener">
+      JB²ALL GAME REGION NGRONGGOT (JATIM)
+    </a>
+
+  <div class="wa-box">
+    <a href="https://chat.whatsapp.com/E8uJjeMxysQC8FSOlF4JD2" target="_blank" rel="noopener">
+      JB ALL GAME MATCHA STORE JATIM🇮🇩
+    </a>
+
+  <div class="wa-box">
+    <a href="https://chat.whatsapp.com/FJRjUECvB3HHPunczEcG77?mode=ems_copy_t" target="_blank" rel="noopener">
+      JB || JURAGAN WITO X OWN ILHAM NGRONGGOT
+    </a>
+
+  <div class="wa-box">
+    <a href="https://chat.whatsapp.com/Kp9aQxNXWozFDMTfpdunOL?mode=wwt"?mode=ems_copy_t" target="_blank" rel="noopener">
+      JB¹ | AMBA STORE X Parid Own
+    </a>
+    
+  </body>
+  </html>
